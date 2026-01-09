@@ -1,0 +1,326 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Notion - Un espacio de trabajo único y sin tareas repetitivas</title>
+    <link rel="stylesheet" href="vendor/normalize.css">
+    <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="container">
+            <h1 class="hero-title">Un espacio de trabajo único y sin tareas repetitivas</h1>
+            <p class="hero-subtitle">Donde tus equipos y agentes de IA guardan el conocimiento, encuentran respuestas y automatizan proyectos. Ahora, un equipo de 7 personas trabaja como uno de 70.</p>
+            <div class="hero-buttons">
+                <a href="pages/logearse.html" class="btn btn-secondary btn-large">Iniciar sesión</a>
+                <a href="pages/registrarse.html" class="btn btn-primary btn-large">Registrarse gratis</a>
+            </div>
+            <p class="hero-trust">Los mejores equipos confían en Notion</p>
+        </div>
+    </section>
+
+    <!-- Notion 3.0 Section -->
+    <section class="notion-3-section">
+        <div class="container">
+            <h2 class="section-title">Presentamos Notion 3.0</h2>
+            
+            <div class="feature-card">
+                <div class="feature-badge">Nuevo</div>
+                <h3 class="feature-title">Agente personal</h3>
+                <p class="feature-description">Tú asignas las tareas. Tu agente las ejecuta.</p>
+            </div>
+
+            <div class="features-grid">
+                <div class="feature-item">
+                    <h4>Delega las tareas rutinarias</h4>
+                    <p>Lo que antes llevaba días, ahora en minutos. Cuéntale tu objetivo y míralo trabajar.</p>
+                </div>
+                <div class="feature-item">
+                    <h4>Colabora con tu equipo</h4>
+                    <p>Es como contar con un experto incorporado que apoya a tu equipo.</p>
+                </div>
+                <div class="feature-item">
+                    <h4>Sabe todo lo que tú sabes</h4>
+                    <p>Busca en todas tus páginas, mensajes, archivos y en la web para encontrar exactamente lo que necesitas.</p>
+                </div>
+                <div class="feature-item">
+                    <h4>Personalizado para ti</h4>
+                    <p>Tu agente aprende cómo trabajas. Tú controlas todo: desde su comportamiento hasta su apariencia.</p>
+                </div>
+            </div>
+
+            <div class="feature-section">
+                <h3>Agentes personalizados</h3>
+                <p class="coming-soon">Próximamente</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Automation Section -->
+    <section class="automation-section">
+        <div class="container">
+            <h2 class="section-title">Automatiza tareas repetitivas.</h2>
+        </div>
+    </section>
+
+    <!-- Enterprise Search Section -->
+    <section class="enterprise-search-section">
+        <div class="container">
+            <h2 class="section-title">Búsqueda Enterprise</h2>
+            <p class="section-subtitle">Encuéntralo todo con una búsqueda.</p>
+        </div>
+    </section>
+
+    <!-- AI Notetaker Section -->
+    <section class="ai-notetaker-section">
+        <div class="container">
+            <h2 class="section-title">Anotador con IA</h2>
+            <p class="section-subtitle">Notas de diez, siempre</p>
+        </div>
+    </section>
+
+    <!-- Flexible Workflows Section -->
+    <section class="workflows-section">
+        <div class="container">
+            <h2 class="section-title">Flujos de trabajo flexibles</h2>
+            <p class="section-subtitle">Gestiona cualquier proyecto, grande o pequeño.</p>
+        </div>
+    </section>
+
+    <!-- Quote Section -->
+    <section class="quote-section">
+        <div class="container">
+            <blockquote class="main-quote">
+                <p>Una app capaz de hacerlo todo, ahora con IA</p>
+                <cite>forbes</cite>
+            </blockquote>
+        </div>
+    </section>
+
+    <!-- Productivity Section -->
+    <section class="productivity-section">
+        <div class="container">
+            <h2 class="section-title">Más productividad. Menos apps.</h2>
+            <p class="section-description">Reúne todas tus herramientas y equipos bajo un mismo techo. Calcula cuánto ahorrarás a continuación.</p>
+            
+            <div class="tools-list">
+                <div class="tool-item">Búsqueda con IA - 35 USD/usuario</div>
+                <div class="tool-item">Chatbot con IA - 20 USD/usuario</div>
+                <div class="tool-item">Anotador con IA - 18 USD/usuario</div>
+                <div class="tool-item">Asistente de redacción con IA - 20 USD/usuario</div>
+                <div class="tool-item">App de correo electrónico con IA - 30 USD/usuario</div>
+                <div class="tool-item">Investigación con IA - 40 USD/usuario</div>
+                <div class="tool-item">Programación del calendario - 15 USD/usuario</div>
+                <div class="tool-item">Wiki del equipo - 10 USD/usuario</div>
+                <div class="tool-item">Herramienta de gestión de proyectos - 24 USD/usuario</div>
+                <div class="tool-item">CRM básico - 20 USD/usuario</div>
+                <div class="tool-item">Creador de sitios web - 20 USD/usuario</div>
+                <div class="tool-item">Formularios - 15 USD/usuario</div>
+            </div>
+
+            <div class="savings-calculator">
+                <p>Tamaño del equipo: <span id="team-size">0</span></p>
+                <p>Ahorro mensual: <span id="monthly-savings">0 US$</span></p>
+                <p>Ahorro anual: <span id="annual-savings">0 US$</span></p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Social Proof Section -->
+    <section class="social-proof-section">
+        <div class="container">
+            <h2 class="section-title">La opción de los equipos que entregan resultados.</h2>
+            
+            <div class="testimonial">
+                <blockquote>
+                    <p>Todo cambia cuando puedes trabajar desde un solo sitio. Para nosotros, ese sitio es Notion.</p>
+                    <cite>OpenAI</cite>
+                </blockquote>
+            </div>
+
+            <div class="testimonials-grid">
+                <div class="testimonial-item">
+                    <p>Flujos de trabajo simplificados que reducen plazos hasta tres veces.</p>
+                </div>
+                <div class="testimonial-item">
+                    <p>"Con Notion, cada persona en Ramp tiene un agente de IA".</p>
+                </div>
+                <div class="testimonial-item">
+                    <p>"En Notion, comprenden que puedes resolver muchos problemas con una sola herramienta".</p>
+                </div>
+                <div class="testimonial-item">
+                    <p>"Notion fue la forma más efectiva y potente que encontramos para optimizar nuestro flujo de trabajo".</p>
+                </div>
+                <div class="testimonial-item">
+                    <p>"El uso de las herramientas más nativas de IA, como Notion, supone una importante ventaja competitiva para nosotros".</p>
+                </div>
+                <div class="testimonial-item">
+                    <p>Un único espacio para el trabajo y la IA, donde todos están al tanto y el trabajo no se detiene.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Stats Section -->
+    <section class="stats-section">
+        <div class="container">
+            <h2 class="section-title">Más de 100 millones de usuarios en todo el mundo</h2>
+            
+            <div class="stats-grid">
+                <div class="stat-item">
+                    <h3>#1</h3>
+                    <p>La base de conocimiento n.º 1 durante 3 años consecutivos (G2)</p>
+                </div>
+                <div class="stat-item">
+                    <h3>#1</h3>
+                    <p>Búsqueda Enterprise con IA (G2)</p>
+                </div>
+                <div class="stat-item">
+                    <h3>#1</h3>
+                    <p>Escritura clasificada de IA (G2)</p>
+                </div>
+                <div class="stat-item">
+                    <p>El 62 % de las empresas de la lista Fortune 100</p>
+                </div>
+                <div class="stat-item">
+                    <p>Más del 50 % de las empresas de Y Combinator (YC)</p>
+                </div>
+                <div class="stat-item">
+                    <p>Más de 1,4 millones en nuestra comunidad global</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- AI Use Cases Section -->
+    <section class="ai-use-cases-section">
+        <div class="container">
+            <h2 class="section-title">Deja que la IA de Notion se encargue del trabajo rutinario.</h2>
+            <p class="section-subtitle">Elige un ejemplo para ver cómo Notion hace el trabajo por ti.</p>
+            
+            <div class="use-cases-grid">
+                <a href="#" class="use-case-item">De lluvia de ideas a hoja de ruta</a>
+                <a href="#" class="use-case-item">Convierte las reuniones en publicaciones para redes sociales</a>
+                <a href="#" class="use-case-item">Organiza tu espacio de trabajo</a>
+                <a href="#" class="use-case-item">Incorpora a una nueva persona al equipo</a>
+                <a href="#" class="use-case-item">Revisa una landing page</a>
+                <a href="#" class="use-case-item">Organiza un evento de empresa</a>
+                <a href="#" class="use-case-item">Lleva un registro de tus restaurantes favoritos</a>
+                <a href="#" class="use-case-item">Transforma notas en tareas</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Download Section -->
+    <section class="download-section">
+        <div class="container">
+            <h2 class="section-title">Pruébalo gratis.</h2>
+            
+            <div class="download-grid">
+                <div class="download-card">
+                    <h3>Primeros pasos en Notion</h3>
+                    <p>Tu espacio de trabajo con IA y agentes integrados.</p>
+                    <a href="#" class="btn btn-download">Descárgalo para Mac</a>
+                </div>
+                <div class="download-card">
+                    <h3>Notion Mail</h3>
+                    <p>La bandeja de entrada con IA que piensa como tú.</p>
+                    <a href="#" class="btn btn-download">Descárgalo</a>
+                </div>
+                <div class="download-card">
+                    <h3>Notion Calendar</h3>
+                    <p>Horarios, eventos, tareas: todo junto.</p>
+                    <a href="#" class="btn btn-download">Descárgalo</a>
+                </div>
+            </div>
+            
+            <p class="download-note">Siempre puedes acceder a Notion desde tu navegador.</p>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="main-footer">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-column">
+                    <h4>Producto</h4>
+                    <ul>
+                        <li><a href="#">IA de Notion</a></li>
+                        <li><a href="#">Agentes</a></li>
+                        <li><a href="#">Búsqueda Enterprise</a></li>
+                        <li><a href="#">Anotador con IA</a></li>
+                        <li><a href="#">Documentos</a></li>
+                        <li><a href="#">Base de conocimiento</a></li>
+                        <li><a href="#">Proyectos</a></li>
+                        <li><a href="#">Sitios</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h4>Primeros pasos</h4>
+                    <ul>
+                        <li><a href="#">Explora casos prácticos de la IA</a></li>
+                        <li><a href="#">Explora Notion Marketplace</a></li>
+                        <li><a href="#">Descubre las integraciones</a></li>
+                        <li><a href="#">Descargar Web Clipper</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h4>Equipos</h4>
+                    <ul>
+                        <li><a href="#">Desarrollo y producto</a></li>
+                        <li><a href="#">Diseño</a></li>
+                        <li><a href="#">Marketing</a></li>
+                        <li><a href="#">TI</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h4>Tamaño del equipo</h4>
+                    <ul>
+                        <li><a href="#">Startups</a></li>
+                        <li><a href="#">Pymes</a></li>
+                        <li><a href="#">Empresa</a></li>
+                        <li><a href="#">Educación</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h4>Recursos</h4>
+                    <ul>
+                        <li><a href="#">Centro de ayuda</a></li>
+                        <li><a href="#">Notion Academy</a></li>
+                        <li><a href="#">Historias de clientes</a></li>
+                        <li><a href="#">Blog</a></li>
+                        <li><a href="#">Comunidad</a></li>
+                        <li><a href="#">Programas para socios</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h4>Crear</h4>
+                    <ul>
+                        <li><a href="#">API</a></li>
+                        <li><a href="#">Plantillas</a></li>
+                        <li><a href="#">Seguridad</a></li>
+                        <li><a href="#">Consultores</a></li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="footer-bottom">
+                <p>&copy; 2026 Notion Labs, Inc.</p>
+                <div class="footer-links">
+                    <a href="#">Empresa</a>
+                    <a href="#">Conócenos</a>
+                    <a href="#">Únete a nuestro equipo</a>
+                    <a href="#">Seguridad</a>
+                    <a href="#">Estado</a>
+                    <a href="#">Términos de uso y privacidad</a>
+                    <a href="#">Tus derechos de privacidad</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script src="js/main.js"></script>
+</body>
+</html>
