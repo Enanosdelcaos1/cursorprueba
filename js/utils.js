@@ -16,8 +16,100 @@ function formatDate(date) {
  * @returns {boolean} true si es válido
  */
 function validateEmail(email) {
-    const re = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    const re = /^[a-z0-9._%+\-]+@[a-z0-9.\-]+\.[a-z]{2,}$/i;
     return re.test(email);
+}
+
+/**
+ * Sanitiza un email
+ * @param {string} email - Email a sanitizar
+ * @returns {string} Email sanitizado
+ */
+function sanitizeEmail(email) {
+    return email.trim().toLowerCase();
+}
+
+/**
+ * Valida un nombre de usuario
+ * @param {string} username - Nombre de usuario a validar
+ * @returns {boolean} true si es válido
+ */
+function validateUsername(username) {
+    const re = /^[a-zA-Z0-9_]{3,20}$/;
+    return re.test(username);
+}
+
+/**
+ * Sanitiza un nombre de usuario
+ * @param {string} username - Nombre de usuario a sanitizar
+ * @returns {string} Nombre de usuario sanitizado
+ */
+function sanitizeUsername(username) {
+    return username.trim().replace(/[^a-zA-Z0-9_]/g, '');
+}
+
+/**
+ * Valida una contraseña
+ * @param {string} password - Contraseña a validar
+ * @returns {object} { valid: boolean, errors: string[] }
+ */
+function validatePassword(password) {
+    const errors = [];
+    
+    if (password.length < 8) {
+        errors.push('La contraseña debe tener al menos 8 caracteres');
+    }
+    if (password.length > 128) {
+        errors.push('La contraseña no puede tener más de 128 caracteres');
+    }
+    if (!/[a-z]/.test(password)) {
+        errors.push('La contraseña debe contener al menos una letra minúscula');
+    }
+    if (!/[A-Z]/.test(password)) {
+        errors.push('La contraseña debe contener al menos una letra mayúscula');
+    }
+    if (!/[0-9]/.test(password)) {
+        errors.push('La contraseña debe contener al menos un número');
+    }
+    if (!/[^a-zA-Z0-9]/.test(password)) {
+        errors.push('La contraseña debe contener al menos un símbolo especial');
+    }
+    
+    return {
+        valid: errors.length === 0,
+        errors: errors
+    };
+}
+
+/**
+ * Sanitiza una cadena de texto
+ * @param {string} str - Cadena a sanitizar
+ * @returns {string} Cadena sanitizada
+ */
+function sanitizeString(str) {
+    if (typeof str !== 'string') return '';
+    return str.trim().replace(/[<>]/g, '');
+}
+
+/**
+ * Verifica el token de Cloudflare Turnstile
+ * @param {string} token - Token de Turnstile
+ * @returns {Promise<boolean>} true si el token es válido
+ */
+async function verifyTurnstileToken(token) {
+    if (!token) {
+        return false;
+    }
+    
+    try {
+        // En producción, esto debería hacer una petición a tu servidor
+        // que verifique el token con Cloudflare
+        // Por ahora, solo verificamos que el token existe
+        return token.length > 0;
+    } catch (error) {
+        console.error('Error verificando Turnstile:', error);
+        return false;
+    }
 }
 
 /**

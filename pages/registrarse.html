@@ -6,9 +6,132 @@
     <title>Registrarse - Mi Proyecto</title>
     <link rel="stylesheet" href="../vendor/normalize.css">
     <link rel="stylesheet" href="../css/styles.css">
+    <!-- Cloudflare Turnstile -->
+    <script src="https://challenges.cloudflare.com/turnstile/v0/api.js" async defer></script>
 </head>
 <body>
+    <div class="register-container">
+        <div class="register-card" id="registerCard" style="display: none;">
+            <h1 class="register-title">Crear cuenta</h1>
+            <p class="register-subtitle">Completa el formulario para registrarte</p>
+            
+            <form id="registerForm" novalidate>
+                <div class="form-group">
+                    <label for="email" class="form-label">Email</label>
+                    <input 
+                        type="email" 
+                        id="email" 
+                        name="email" 
+                        class="form-input" 
+                        required
+                        autocomplete="email"
+                        pattern="[a-z0-9._%+\-]+@[a-z0-9.\-]+\.[a-z]{2,}$"
+                        minlength="5"
+                        maxlength="100"
+                        placeholder="tu@email.com"
+                    >
+                    <span class="error-message" id="emailError"></span>
+                </div>
 
+                <div class="form-group">
+                    <label for="username" class="form-label">Nombre de usuario</label>
+                    <input 
+                        type="text" 
+                        id="username" 
+                        name="username" 
+                        class="form-input" 
+                        required
+                        autocomplete="username"
+                        pattern="[a-zA-Z0-9_]{3,20}"
+                        minlength="3"
+                        maxlength="20"
+                        placeholder="usuario123"
+                    >
+                    <span class="error-message" id="usernameError"></span>
+                    <small class="form-hint">Solo letras, números y guiones bajos. Entre 3 y 20 caracteres.</small>
+                </div>
+
+                <div class="form-group">
+                    <label for="password" class="form-label">Contraseña</label>
+                    <input 
+                        type="password" 
+                        id="password" 
+                        name="password" 
+                        class="form-input" 
+                        required
+                        autocomplete="new-password"
+                        minlength="8"
+                        maxlength="128"
+                        placeholder="Mínimo 8 caracteres"
+                    >
+                    <span class="error-message" id="passwordError"></span>
+                    <small class="form-hint">Mínimo 8 caracteres. Incluye mayúsculas, minúsculas, números y símbolos.</small>
+                </div>
+
+                <div class="form-group">
+                    <label for="confirmPassword" class="form-label">Confirmar contraseña</label>
+                    <input 
+                        type="password" 
+                        id="confirmPassword" 
+                        name="confirmPassword" 
+                        class="form-input" 
+                        required
+                        autocomplete="new-password"
+                        minlength="8"
+                        maxlength="128"
+                        placeholder="Repite tu contraseña"
+                    >
+                    <span class="error-message" id="confirmPasswordError"></span>
+                </div>
+
+                <!-- Cloudflare Turnstile Widget -->
+                <div class="form-group">
+                    <div class="cf-turnstile" 
+                         data-sitekey="1x00000000000000000000AA" 
+                         data-theme="light"
+                         data-size="normal"
+                         id="turnstileWidget"></div>
+                    <span class="error-message" id="turnstileError"></span>
+                </div>
+
+                <button type="submit" class="btn btn-primary btn-block" id="submitBtn">
+                    Registrarse
+                </button>
+            </form>
+
+            <p class="register-footer">
+                ¿Ya tienes cuenta? <a href="logearse.html">Inicia sesión</a>
+            </p>
+        </div>
+
+        <div class="loading-container" id="loadingContainer">
+            <div class="loading-spinner"></div>
+            <p>Verificando seguridad...</p>
+        </div>
+    </div>
+
+    <script src="../js/utils.js"></script>
     <script src="../js/main.js"></script>
+    <script>
+        // Script específico para la página de registro
+        document.addEventListener('DOMContentLoaded', function() {
+            // Verificar Cloudflare Turnstile antes de mostrar el formulario
+            checkTurnstileAndShowForm();
+        });
+
+        function checkTurnstileAndShowForm() {
+            // Simular verificación de Turnstile (en producción, esto se haría en el servidor)
+            // Por ahora, mostramos el formulario después de un breve delay
+            setTimeout(() => {
+                const loadingContainer = document.getElementById('loadingContainer');
+                const registerCard = document.getElementById('registerCard');
+                
+                if (loadingContainer && registerCard) {
+                    loadingContainer.style.display = 'none';
+                    registerCard.style.display = 'block';
+                }
+            }, 1000);
+        }
+    </script>
 </body>
 </html>
