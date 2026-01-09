@@ -23,6 +23,11 @@ function setupForms() {
     if (registerForm) {
         setupRegisterForm(registerForm);
     }
+    
+    const loginForm = document.getElementById('loginForm');
+    if (loginForm) {
+        setupLoginForm(loginForm);
+    }
 }
 
 function setupRegisterForm(form) {
@@ -288,6 +293,137 @@ async function handleRegisterSubmit(form) {
         if (submitBtn) {
             submitBtn.disabled = false;
             submitBtn.textContent = 'Registrarse';
+        }
+    }
+}
+
+// Configuración del formulario de login
+function setupLoginForm(form) {
+    // Validación en tiempo real
+    const emailInput = form.querySelector('#email');
+    const passwordInput = form.querySelector('#password');
+
+    // Validación de email
+    if (emailInput) {
+        emailInput.addEventListener('blur', function() {
+            validateEmailField(emailInput);
+        });
+        emailInput.addEventListener('input', debounce(function() {
+            if (emailInput.value.length > 0) {
+                validateEmailField(emailInput);
+            }
+        }, 300));
+    }
+
+    // Validación de contraseña
+    if (passwordInput) {
+        passwordInput.addEventListener('blur', function() {
+            validatePasswordLoginField(passwordInput);
+        });
+    }
+
+    // Manejo del envío del formulario
+    form.addEventListener('submit', async function(e) {
+        e.preventDefault();
+        await handleLoginSubmit(form);
+    });
+}
+
+// Validación de contraseña para login (más simple que registro)
+function validatePasswordLoginField(input) {
+    const errorElement = document.getElementById('passwordError');
+    const password = input.value;
+    
+    if (!password) {
+        showFieldError(input, errorElement, 'La contraseña es requerida');
+        return false;
+    }
+    
+    clearFieldError(input, errorElement);
+    return true;
+}
+
+// Manejo del envío del formulario de login
+async function handleLoginSubmit(form) {
+    const submitBtn = document.getElementById('submitBtn');
+    
+    // Deshabilitar el botón de envío
+    if (submitBtn) {
+        submitBtn.disabled = true;
+        submitBtn.textContent = 'Iniciando sesión...';
+    }
+
+    // Obtener valores y sanitizar
+    const email = sanitizeEmail(form.email.value);
+    const password = form.password.value;
+    const rememberMe = form.rememberMe.checked;
+
+    // Validación HTML (primera capa) - verificar que los campos requeridos estén llenos
+    if (!form.checkValidity()) {
+        form.reportValidity();
+        if (submitBtn) {
+            submitBtn.disabled = false;
+            submitBtn.textContent = 'Iniciar sesión';
+        }
+        return;
+    }
+
+    // Validación JavaScript (segunda capa)
+    let isValid = true;
+    
+    if (!validateEmailField(form.email)) isValid = false;
+    if (!validatePasswordLoginField(form.password)) isValid = false;
+
+    if (!isValid) {
+        if (submitBtn) {
+            submitBtn.disabled = false;
+            submitBtn.textContent = 'Iniciar sesión';
+        }
+        return;
+    }
+
+    try {
+        // Validar credenciales (simulación)
+        const validation = await validateLoginCredentials(email, password);
+        
+        if (!validation.valid) {
+            // Mostrar error de credenciales
+            const passwordError = document.getElementById('passwordError');
+            const passwordInput = form.password;
+            showFieldError(passwordInput, passwordError, validation.message);
+            
+            if (submitBtn) {
+                submitBtn.disabled = false;
+                submitBtn.textContent = 'Iniciar sesión';
+            }
+            return;
+        }
+
+        // Credenciales correctas - guardar en localStorage si "Recordarme" está marcado
+        if (rememberMe) {
+            localStorage.setItem('userEmail', email);
+            localStorage.setItem('rememberMe', 'true');
+        } else {
+            sessionStorage.setItem('userEmail', email);
+            localStorage.removeItem('userEmail');
+            localStorage.removeItem('rememberMe');
+        }
+
+        // Mostrar mensaje de éxito
+        showMessage('Inicio de sesión exitoso. Redirigiendo...', 'success');
+        
+        // Redirigir a acceso.html después de un breve delay
+        setTimeout(() => {
+            window.location.href = 'acceso.html';
+        }, 1000);
+        
+    } catch (error) {
+        console.error('Error en el login:', error);
+        showMessage('Error al iniciar sesión. Por favor intenta de nuevo.', 'error');
+        
+        if (submitBtn) {
+            submitBtn.disabled = false;
+            submitBtn.textContent = 'Iniciar sesión';
         }
     }
 }

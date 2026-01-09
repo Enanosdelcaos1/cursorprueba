@@ -113,6 +113,43 @@ async function verifyTurnstileToken(token) {
 }
 
 /**
+ * Valida las credenciales de login (simulación)
+ * @param {string} email - Email del usuario
+ * @param {string} password - Contraseña del usuario
+ * @returns {Promise<{valid: boolean, message: string}>} Resultado de la validación
+ */
+async function validateLoginCredentials(email, password) {
+    // Credenciales hardcodeadas (simulación hasta conectar con API)
+    const VALID_EMAIL = 'paugoblin@gmail.com';
+    const VALID_PASSWORD = 'Nosferatu1@';
+    
+    // Sanitizar y normalizar
+    const sanitizedEmail = sanitizeEmail(email);
+    const sanitizedPassword = password.trim();
+    
+    // Validar formato de email
+    if (!validateEmail(sanitizedEmail)) {
+        return {
+            valid: false,
+            message: 'El formato del email no es válido'
+        };
+    }
+    
+    // Validar credenciales
+    if (sanitizedEmail === VALID_EMAIL && sanitizedPassword === VALID_PASSWORD) {
+        return {
+            valid: true,
+            message: 'Credenciales correctas'
+        };
+    } else {
+        return {
+            valid: false,
+            message: 'Email o contraseña incorrectos'
+        };
+    }
+}
+
+/**
  * Muestra un mensaje al usuario
  * @param {string} message - Mensaje a mostrar
  * @param {string} type - Tipo de mensaje (success, error, info)
